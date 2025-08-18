@@ -1,6 +1,9 @@
 RubyLLM.configure do |config|
-  # config.openai_api_key = ENV["OPENAI_API_KEY"]
-  # config.anthropic_api_key = ENV["ANTHROPIC_API_KEY"]
-  config.ollama_api_base = ENV.fetch("OLLLAMA_API_BASE", "http://localhost:11434")
-  config.default_model = "phi3:latest"
+  config.ollama_api_base = ENV.fetch("OLLAMA_API_BASE", "http://localhost:11434/v1")
+  # config.default_provider = "ollama"
+  config.default_model = "llama3.2:1b"
+
+  # This should silence the "Assuming model exists" warning and allow unknown models
+  config.log_assume_model_exists = false
+  config.log_level = :debug
 end
