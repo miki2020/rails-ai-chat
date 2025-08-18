@@ -1,0 +1,28 @@
+<h1>Chats</h1>
+<div>
+  <%= link_to 'New Chat', new_chat_path, class: 'btn btn-primary' %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Model</th>
+      <th>Provider</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @chats.each do |chat| %>
+      <tr>
+        <td><%= chat.id %></td>
+        <td><%= chat.model_id %></td>
+        <td><%= chat.provider %></td>
+        <td>
+          <%= link_to 'Show', chat %>
+          <%= link_to 'Edit', edit_chat_path(chat) %>
+          <%= link_to 'Delete', chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

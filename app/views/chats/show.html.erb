@@ -1,0 +1,35 @@
+<h1>Chat Details</h1>
+
+<p>
+  <strong>ID:</strong>
+  <%= @chat.id %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @chat.model_id %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @chat.provider %>
+</p>
+
+<div>
+  <%= link_to 'Edit', edit_chat_path(@chat), class: 'btn btn-secondary' %>
+  <%= link_to 'Back', chats_path, class: 'btn btn-primary' %>
+</div>
+<div>
+  <%= link_to 'Delete', @chat, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+</div>
+<div>
+<% if @chat.messages.any? %>
+  <% @chat.messages.each do |message| %>
+    <div class="message">
+      <p><strong><%= message.user.name %>:</strong> <%= message.content %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>No messages in this chat yet.</p>
+<% end %>
+</div>
